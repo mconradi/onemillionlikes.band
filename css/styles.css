@@ -676,7 +676,11 @@ main {
   color: var(--text-faint);
 }
 
-.lightbox {
+.lightbox:not([open]) {
+  display: none;
+}
+
+.lightbox[open] {
   margin: 0;
   padding: max(3.5rem, env(safe-area-inset-top, 0))
     max(1rem, env(safe-area-inset-right, 0))
@@ -695,7 +699,7 @@ main {
   position: relative;
 }
 
-.lightbox::backdrop {
+.lightbox[open]::backdrop {
   background: rgba(0, 0, 0, 0.88);
 }
 

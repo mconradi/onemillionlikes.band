@@ -322,7 +322,8 @@
         dialog.close();
       }
       closeBtn.addEventListener("click", closeLightbox);
-      dialog.querySelector(".lightbox__scrim").addEventListener("click", closeLightbox);
+      var scrim = dialog.querySelector(".lightbox__scrim");
+      if (scrim) scrim.addEventListener("click", closeLightbox);
       dialog.addEventListener("close", function () {
         lbImg.removeAttribute("src");
         lbImg.alt = "";
