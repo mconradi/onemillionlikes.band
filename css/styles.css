@@ -378,7 +378,7 @@ main {
   margin-bottom: 0;
 }
 
-.release-spotlight {
+#what-we-do > .card + .card {
   margin-top: var(--space-lg);
 }
 
@@ -564,14 +564,6 @@ main {
   max-width: var(--max-read);
 }
 
-.section-sub--lineup {
-  margin-top: var(--space-lg);
-  max-width: var(--max-read);
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
 @media (min-width: 720px) {
   #what-i-do .section__lead,
   #what-we-do .section__lead,
@@ -688,7 +680,8 @@ main {
 
 .site-footer__meta {
   margin: 0;
-  max-width: 18rem;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .site-footer__right {
@@ -697,6 +690,7 @@ main {
   align-items: center;
   gap: var(--space-md) var(--space-lg);
   justify-content: flex-end;
+  flex-shrink: 0;
 }
 
 .site-footer .social {

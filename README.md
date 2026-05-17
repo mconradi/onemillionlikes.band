@@ -17,7 +17,7 @@ Then visit `http://localhost:8080`.
 | What | Where |
 |------|--------|
 | **Spotify** | Music section: replace the gray placeholder with Spotify → Share → **Embed** → paste the `<iframe>`. |
-| **Songtradr** | Pre-release card: title, date, cover image, and all `href="#"` links → your Songtradr pre-release URL. |
+| **Coming soon** | Music section: EP teaser card — title, copy, and artwork (`images/OML - Superpowers.jpeg`). |
 | **YouTube** | Videos section: set `data-youtube-id` on each `iframe.youtube-embed` (the ID from `youtube.com/watch?v=…`). Update captions. |
 | **Shows** | `#shows` list: add `<li class="show-list__item">` rows (copy pattern from [mconradi.com](https://mconradi.com)). |
 | **Hero + gallery** | Add optimized images to `images/` — see `images/README.md`. |

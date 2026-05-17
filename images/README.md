@@ -11,7 +11,7 @@ Suggested files (update paths in `index.html` if you rename):
 | `favicon-16.png`, `favicon-32.png`, `apple-touch-icon.png` | Tab / home-screen icons (generate from logo). |
 | `og-1200x630.jpg` | Social preview image (~1200×630). |
 | `gallery-01.jpg` … `gallery-03.jpg` | Photo strip (square or landscape; add more figures in HTML if needed). |
-| `pre-release-cover.jpg` | Songtradr single artwork (square). |
+| `OML - Superpowers.jpeg` | EP teaser artwork (square) in the Music section. |
 | `One_Million_Likes_Media_Kit.pdf` | Optional footer download. |
 
 **Source folder:** copy from `../tobiastschepe_OML_Bilder_und_so` (e.g. band photos, studio session, Boila 2023) and rename to match the table above.
