@@ -681,6 +681,8 @@ main {
 }
 
 .lightbox[open] {
+  position: fixed;
+  inset: 0;
   margin: 0;
   padding: max(3.5rem, env(safe-area-inset-top, 0))
     max(1rem, env(safe-area-inset-right, 0))
@@ -688,15 +690,16 @@ main {
     max(1rem, env(safe-area-inset-left, 0));
   max-width: none;
   max-height: none;
-  width: 100vw;
-  height: 100vh;
+  width: auto;
+  height: auto;
   border: none;
   background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  position: relative;
+  overflow: auto;
+  overscroll-behavior: contain;
 }
 
 .lightbox[open]::backdrop {
@@ -704,7 +707,7 @@ main {
 }
 
 .lightbox__scrim {
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 0;
   cursor: zoom-out;
@@ -715,6 +718,7 @@ main {
   z-index: 1;
   max-width: min(96vw, 1400px);
   max-height: min(88vh, 1200px);
+  max-height: min(88dvh, 1200px);
   width: auto;
   height: auto;
   object-fit: contain;
@@ -723,7 +727,7 @@ main {
 }
 
 .lightbox__close {
-  position: fixed;
+  position: absolute;
   top: max(0.75rem, env(safe-area-inset-top, 0));
   right: max(0.75rem, env(safe-area-inset-right, 0));
   z-index: 2;
