@@ -189,24 +189,34 @@
     <section id="photos" class="section">
       <h2 class="section__title">Photos</h2>
       <div class="gallery">
-        <figure>
-          <img src="images/OML160720_071_hd.jpg" width="800" height="800" alt="One Million Likes — rehearsal" loading="lazy" decoding="async">
+        <figure class="gallery__figure">
+          <button type="button" class="gallery__thumb" aria-haspopup="dialog" aria-label="Enlarge: Rehearsal">
+            <img src="images/OML160720_071_hd.jpg" width="800" height="800" alt="One Million Likes — rehearsal" loading="lazy" decoding="async">
+          </button>
           <figcaption>Rehearsal</figcaption>
         </figure>
-        <figure>
-          <img src="images/OML220725_3797.jpg" width="800" height="800" alt="One Million Likes — full band" loading="lazy" decoding="async">
+        <figure class="gallery__figure">
+          <button type="button" class="gallery__thumb" aria-haspopup="dialog" aria-label="Enlarge: Full band">
+            <img src="images/OML220725_3797.jpg" width="800" height="800" alt="One Million Likes — full band" loading="lazy" decoding="async">
+          </button>
           <figcaption>Full band</figcaption>
         </figure>
-        <figure>
-          <img src="images/OML_11-22_2664.jpg" width="800" height="800" alt="One Million Likes — studio session 1" loading="lazy" decoding="async">
+        <figure class="gallery__figure">
+          <button type="button" class="gallery__thumb" aria-haspopup="dialog" aria-label="Enlarge: Studio session 1">
+            <img src="images/OML_11-22_2664.jpg" width="800" height="800" alt="One Million Likes — studio session 1" loading="lazy" decoding="async">
+          </button>
           <figcaption>Studio session 1</figcaption>
         </figure>
-        <figure>
-          <img src="images/OML_11-22_3097.jpg" width="800" height="800" alt="One Million Likes — studio session 2" loading="lazy" decoding="async">
+        <figure class="gallery__figure">
+          <button type="button" class="gallery__thumb" aria-haspopup="dialog" aria-label="Enlarge: Studio session 2">
+            <img src="images/OML_11-22_3097.jpg" width="800" height="800" alt="One Million Likes — studio session 2" loading="lazy" decoding="async">
+          </button>
           <figcaption>Studio session 2</figcaption>
         </figure>
-        <figure>
-          <img src="images/OML_11-22_3118.jpg" width="800" height="800" alt="One Million Likes — studio session 3" loading="lazy" decoding="async">
+        <figure class="gallery__figure">
+          <button type="button" class="gallery__thumb" aria-haspopup="dialog" aria-label="Enlarge: Studio session 3">
+            <img src="images/OML_11-22_3118.jpg" width="800" height="800" alt="One Million Likes — studio session 3" loading="lazy" decoding="async">
+          </button>
           <figcaption>Studio session 3</figcaption>
         </figure>
       </div>
@@ -269,6 +279,15 @@
     </div>
   </footer>
 
+  <dialog class="lightbox" id="photo-lightbox" aria-labelledby="lightbox-heading">
+    <div class="lightbox__scrim" tabindex="-1" aria-hidden="true"></div>
+    <h2 id="lightbox-heading" class="sr-only">Enlarged photo</h2>
+    <button type="button" class="lightbox__close" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+    <img class="lightbox__img" src="" alt="">
+  </dialog>
+
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
     document.querySelectorAll("iframe.youtube-embed").forEach(function (el) {
@@ -284,6 +303,31 @@
         "?enablejsapi=1&origin=" +
         encodeURIComponent(location.origin);
     });
+
+    (function () {
+      var dialog = document.getElementById("photo-lightbox");
+      if (!dialog || typeof dialog.showModal !== "function") return;
+      var lbImg = dialog.querySelector(".lightbox__img");
+      var closeBtn = dialog.querySelector(".lightbox__close");
+      document.querySelectorAll(".gallery__thumb").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var thumb = btn.querySelector("img");
+          if (!thumb) return;
+          lbImg.src = thumb.currentSrc || thumb.src;
+          lbImg.alt = thumb.getAttribute("alt") || "";
+          dialog.showModal();
+        });
+      });
+      function closeLightbox() {
+        dialog.close();
+      }
+      closeBtn.addEventListener("click", closeLightbox);
+      dialog.querySelector(".lightbox__scrim").addEventListener("click", closeLightbox);
+      dialog.addEventListener("close", function () {
+        lbImg.removeAttribute("src");
+        lbImg.alt = "";
+      });
+    })();
   </script>
 </body>
 </html>
